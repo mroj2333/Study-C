@@ -1,0 +1,15 @@
+{
+    "cmain": {
+        "prefix": "cmain",
+        "body": [
+            "#include <stdio.h>",
+            "\r",
+            "int main(void){",
+            "\t$1",
+            "\r",
+            "\treturn 0;",
+            "}"
+        ],
+        "description": "新建文件时快速输入C语言main函数"
+    }
+}
