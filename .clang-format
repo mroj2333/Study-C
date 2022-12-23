@@ -6,12 +6,18 @@ PointerAlignment: true
 AlwaysBreakAfterReturnType: None
 AlwaysBreakTemplateDeclarations: true
 AlwaysBreakBeforeMultilineStrings: true
-AlignOperands: true
-AlignAfterOpenBracket: true
-AlignConsecutiveBitFields: true
-AlignConsecutiveMacros: true
-ConstructorInitializerAllOnOneLineOrOnePerLine: true
-AllowAllConstructorInitializersOnNextLine: false
-BinPackArguments: false
+AlignOperands: true # 水平对齐二进制和三进制表达式的操作数
+AlignAfterOpenBracket: true # 打开括号后水平对齐参数
+AlignConsecutiveBitFields: true # 对齐连续位字段的样式
+AlignConsecutiveMacros: true  # 对齐连续宏定义的风格
+AlignTrailingComments:  # 控制行尾的注释
+  Kind: Always  # 对齐尾随注释
+  OverEmptyLines: 2 # 应用对齐的空行多少条
+  MaxEmptyLinesToKeep: 2  # 最大空行
+  OverEmptyLines: 1 # 最小空行
+# ConstructorInitializerAllOnOneLineOrOnePerLine: true  # 此选项已被弃用
+# AllowAllConstructorInitializersOnNextLine: false # 此选项已被弃用
+AllowAllArgumentsOnNextLine: true  # 如果函数调用或大括号初始化列表不适合行，则允许将所有参数放在下一行
+BinPackArguments: true # 函数调用的参数都在同一行上
 BinPackParameters: false
 IncludeBlocks: Regroup
