@@ -12,7 +12,7 @@
                 "-g",
                 "-Wall",
                 "-o",
-                "${workspaceFolder}/Build_files/${fileBasenameNoExtension}",
+                "${workspaceFolder}/Build_files/${fileBasenameNoExtension}.out",
                 "${file}"
             ],
             "group": {
