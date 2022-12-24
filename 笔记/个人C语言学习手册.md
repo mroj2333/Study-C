@@ -25,8 +25,6 @@
     <tr><td><strong>VS code安装示例（GIF文件，导出PDF可能无法正常播放）</strong></td></tr>
 	</tbody>
 </table>
-
-
 2. **下载编译器MinGW并解压**
 - 官网页面：https://www.mingw-w64.org/
 
@@ -46,8 +44,6 @@
     <tr><td><strong>MinGW下载说明</strong></td></tr>
 	</tbody>
 </table>
-
-
   > 如果你因为网络环境限制无法下载
   >
   > 不限速下载，请笑纳^-^：https://wwn.lanzouh.com/iLOip031ku6b 密码:1234
@@ -128,64 +124,6 @@
     <tr><td><strong>VS code运行代码示例（GIF文件，导出PDF可能无法正常播放）</strong></td></tr>
 	</tbody>
 </table>
-
-6. **调整和优化**
-> 请根据自己的需要进行优化
->
-> 代码运行后 `.vscode` 文件夹会自动生成在你的源文件目录下
->
-> `.vscode` 文件夹下的 `task.json` 和 `launch.json` 用来控制程序的运行和调试
-
-- 将程序运行在外部控制台【推荐】
-
-  - 打开`.vscode` 文件夹下的 `launch.json` 文件，找到 `"externalConsole": false,` 将 `false` 改为 `true` 并保存
-
-<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
-	<tbody>
-		<tr>
-			<td style="padding: 6px"><img src="assets/1669030566817-17.png" ></td>
-		</tr>
-    <tr><td><strong>launch.json配置说明</strong></td></tr>
-	</tbody>
-</table>
-
-- 解决中文乱码问题【推荐】
-
-  - 打开`.vscode` 文件夹下的 `task.json` 文件，找到 `"${fileDirname}\\${fileBasenameNoExtension}.exe"` 在后面加上英文 `逗号` 然后回车到下一行，粘贴下面文本 `"-fexec-charset=GBK"` 并保存
-
-<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
-<tbody>
-<tr>
-<td style="padding: 6px"><img src="assets/1669030578077-19.png" ></td>
-</tr>
-<tr><td><strong>task.json配置说明</strong></td></tr>
-</tbody>
-</table>
-
-
-
-- 收纳生成的 `exe` 可执行文件【可选】
-
-  - 打开`.vscode` 文件夹下的 `task.json` 文件，找到 `"${fileDirname}\\${fileBasenameNoExtension}.exe"` 
-
-  - 修改成 `"${fileDirname}\\coin\\${fileBasenameNoExtension}.exe"` 并保存，同理，`launch.json` 下也有相同的字段，需要你修改
-
-  - 在源文件同目录下新建 `coin` 文件夹，程序运行后，可执行文件将会生成在里面（其中 `coin` 可修改成你喜欢的英文名字）
-
-    > 这样 `.c` 文件一多起来的时候，就不会出现 `.exe` 和 `.c` 相互穿插在目录中^-^
-<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
-	<tbody>
-		<tr>
-			<td style="padding: 6px"><img src="assets/1669030589539-21.png" ></td>
-		</tr>
-    <tr><td><strong>文件归档示例</strong></td></tr>
-	</tbody>
-</table>
-
-7. **提示**
-- 若源代码文件夹含有中文路径，将会无法编译程序。
-- 若Windows用户名使用了中文，可能无法运行。
-
 ### 二、Mac环境下快速配置
 1. **安装Command_Line_Tools_for_Xcode**
 
@@ -198,8 +136,6 @@
     <tr><td><strong>测试gcc是否安装成功</strong></td></tr>
 	</tbody>
 </table>
-
-
 注意下载的时间版本要对应系统版本，不要下载错了 
 
 或者可以先安装HomeBrew，安装后安装lux、FFmpeg，过程中会自动安装Command_Line_Tools_for_Xcode
@@ -529,13 +465,19 @@ PointerAlignment: true
 AlwaysBreakAfterReturnType: None
 AlwaysBreakTemplateDeclarations: true
 AlwaysBreakBeforeMultilineStrings: true
-AlignOperands: true
-AlignAfterOpenBracket: true
-AlignConsecutiveBitFields: true
-AlignConsecutiveMacros: true
-ConstructorInitializerAllOnOneLineOrOnePerLine: true
-AllowAllConstructorInitializersOnNextLine: false
-BinPackArguments: false
+AlignOperands: true # 水平对齐二进制和三进制表达式的操作数
+AlignAfterOpenBracket: true # 打开括号后水平对齐参数
+AlignConsecutiveBitFields: true # 对齐连续位字段的样式
+AlignConsecutiveMacros: true  # 对齐连续宏定义的风格
+AlignTrailingComments:  # 控制行尾的注释
+  Kind: Always  # 对齐尾随注释
+  OverEmptyLines: 2 # 应用对齐的空行多少条
+  MaxEmptyLinesToKeep: 2  # 最大空行
+  OverEmptyLines: 1 # 最小空行
+# ConstructorInitializerAllOnOneLineOrOnePerLine: true  # 此选项已被弃用
+# AllowAllConstructorInitializersOnNextLine: false # 此选项已被弃用
+AllowAllArgumentsOnNextLine: true  # 如果函数调用或大括号初始化列表不适合行，则允许将所有参数放在下一行
+BinPackArguments: true # 函数调用的参数都在同一行上
 BinPackParameters: false
 IncludeBlocks: Regroup
 ```
@@ -577,8 +519,6 @@ C语言的
 }
 ```
 
-
-
 ### 五、VS code优化使用体验篇（设置 | 插件）
 
 > VS code是一个非常好用的文本编辑器，通过各式各样的插件几乎是万能的，也可以作为好用的IDE，但vscode有很多默认不开启的、以下是推荐开启的一些配置选项和一些好用的插件。
@@ -611,6 +551,65 @@ settings.json中的一些基础配置
 }
 ```
 
+
+
+> 请根据自己的需要进行优化
+>
+> 代码运行后 `.vscode` 文件夹会自动生成在你的源文件目录下
+>
+> `.vscode` 文件夹下的 `task.json` 和 `launch.json` 用来控制程序的运行和调试
+
+- 将程序运行在外部控制台【推荐】
+
+  - 打开`.vscode` 文件夹下的 `launch.json` 文件，找到 `"externalConsole": false,` 将 `false` 改为 `true` 并保存
+
+<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
+	<tbody>
+		<tr>
+			<td style="padding: 6px"><img src="assets/1669030566817-17.png" ></td>
+		</tr>
+    <tr><td><strong>launch.json配置说明</strong></td></tr>
+	</tbody>
+</table>
+
+
+- 解决中文乱码问题【推荐】
+
+  - 打开`.vscode` 文件夹下的 `task.json` 文件，找到 `"${fileDirname}\\${fileBasenameNoExtension}.exe"` 在后面加上英文 `逗号` 然后回车到下一行，粘贴下面文本 `"-fexec-charset=GBK"` 并保存
+
+<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
+<tbody>
+<tr>
+<td style="padding: 6px"><img src="assets/1669030578077-19.png" ></td>
+</tr>
+<tr><td><strong>task.json配置说明</strong></td></tr>
+</tbody>
+</table>
+
+
+- 收纳生成的 `exe` 可执行文件【可选】
+
+  - 打开`.vscode` 文件夹下的 `task.json` 文件，找到 `"${fileDirname}\\${fileBasenameNoExtension}.exe"` 
+
+  - 修改成 `"${fileDirname}\\coin\\${fileBasenameNoExtension}.exe"` 并保存，同理，`launch.json` 下也有相同的字段，需要你修改
+
+  - 在源文件同目录下新建 `coin` 文件夹，程序运行后，可执行文件将会生成在里面（其中 `coin` 可修改成你喜欢的英文名字）
+
+    > 这样 `.c` 文件一多起来的时候，就不会出现 `.exe` 和 `.c` 相互穿插在目录中^-^
+
+<table style="border:none;text-align:center;width:auto;margin: 0 auto;">
+	<tbody>
+		<tr>
+			<td style="padding: 6px"><img src="assets/1669030589539-21.png" ></td>
+		</tr>
+    <tr><td><strong>文件归档示例</strong></td></tr>
+	</tbody>
+</table>
+
+**提示**
+
+- 若源代码文件夹含有中文路径，将会无法编译程序。
+- 若Windows用户名使用了中文，可能无法运行。
 
 **插件**
 
@@ -853,11 +852,331 @@ http://127.0.0.1:7890
 
 使用激活码进行激活以后即可正常使用了
 
+### 二、使用CLion编写C语言程序
+
+对于安装完成并配置好 C/C++ 编译器的 CLion，就可以直接使用它编写并运行 C 语言程序了。接下来，我们以一段完整的 C 语言代码为例，为大家讲解如何用 CLion 运行这段代码。
+
+```c
+#include <stdio.h>
+int main()
+{
+    puts("C语言中文网");
+    return 0;
+}
+```
+
+#### 创建工程
+
+打开 CLion，选择“新建项目”，如下图所示：
+
+![img](./assets/1523403526-0.gif)
+图 1 新建项目
+
+
+弹出如下窗口，选择要创建的项目类型，这里选择创建“C 可执行文件”项目，该项目遵循的 C语言标准为 C11：
+
+![img](./assets/152340J47-1.gif)
+图 2 创建C语言项目
+
+
+创建好的项目如下图所示：
+
+![img](./assets/152340E34-2.gif)
+图 3 初始C语言项目
+
+#### CLion运行C语言程序
+
+初始状态，创建好的项目中只有 main.c 源文件，其它文件都是为 CLion 运行 C 语言程序提供支持的。在 main.c 文件中，CLion 已经编写好了一个最简单的 "Hello, World!" 程序，将它替换成我们自己编写好的程序。
+
+![img](./assets/1523401422-3.gif)
+图 4 编写 C 语言程序
+
+
+程序编写完成后，点击工具栏中的“▶”运行按钮，就可以看到程序的运行结果为：
+
+![img](./assets/1523401293-4.gif)
+图 5 程序运行结果
+
+
+运行结果显示，程序正常运行，但输出的中文无法正常显示。这里给大家提供一种解决“文件乱码”的方法：
+1、菜单栏中依次选择“文件 -> 编辑器 -> 文件编码”，按照下图修改编码格式：
+
+![img](./assets/1523403143-5.gif)
+图 6 修改编码格式
+
+
+2、按照下图所示，将文件编码格式由 UTF-8 改为 GBK，弹出的对话框中选择“转换”：
+
+![img](./assets/1523402D0-6.gif)
+图 7 修改文件编码
+
+
+3、重新运行 C 语言程序，就可以看到正常显示的中文：
+
+![img](./assets/1523405116-7.gif)
+
 ## 第三节、Visual Studio配置
 
 Microsoft Visual Studio（简称VS）是美国微软公司的开发工具包系列产品。VS是一个基本完整的开发工具集，它包括了整个软件生命周期中所需要的大部分工具，如UML工具、代码管控工具、集成开发环境(IDE)等等,所写的目标代码适用于微软支持的所有平台。Visual Studio是目前最流行的Windows平台应用程序的集成开发环境。
 
-### 一、VS常用快捷键
+### 一、VS2015下载地址和安装教程
+
+为了更好地支持 Win10 程序的开发，微软发布了 VS2015。VS2015 支持开发人员编写跨平台的应用程序，从 Windows 到 Mac、Linux、甚至是编写 iOS 和 [Android](http://c.biancheng.net/android/) 代码！
+
+VS2015 共有三个版本，分别是：
+
+- 社区版（Community）：免费提供给单个开发人员、 开放源代码项目、科研、教育以及小型专业团队！大部分程序员（包括初学者）可以无任何经济负担、合法地使用 VS2015 了。
+- 专业版（Professional）：售价 1199 美元。
+- 企业版（Enterprise）：售价 5599 美元。
+
+
+对于大部分程序开发，这三个版本的区别不大，免费的社区版一样可以满足需求，所以我推荐大家使用社区版，既省去了破解的麻烦，也尊重微软的版权。
+
+#### 下载VS2015
+
+VS2015 社区版（Community）下载地址：
+
+- 迅雷下载（较快）：ed2k://|file|cn_visual_studio_community_2015_x86_dvd_6847368.iso|4013920256|EB7F6605EDE67509E218E29173AC6574|/
+- 百度网盘（较慢）：https://pan.baidu.com/s/16aB2go8n4J6vvxzKBA8CTg  提取码：tjcs
+
+
+以上是 Visual Studio 2015 Community 简体中文版下载地址。VS2015 比较大，有 3.73GB，建议用迅雷下载。
+
+#### 安装 VS2015
+
+VS2015 下载完成后会得到一个镜像文件（.iso 文件），双击该文件即可开始安装。
+
+> 提示：必须安装虚拟光驱才能打开该镜像文件。
+
+1) 双击镜像文件后会弹出如下的对话框
+
+![img](./assets/15541521U-1.png)
+
+选择“运行 vs_community.exe”即可进入安装程序。
+
+2) 开始安装后，会出现等待界面（可能需要几分钟）。
+
+![img](./assets/1554156058-2.png)
+
+
+
+3) 初始化安装程序
+
+![img](./assets/1554152206-3.png)
+
+
+
+4) 如果你的计算机配置不恰当，VS 安装程序会给出警告。
+
+![img](./assets/15541530B-4.png)
+
+出现该警告是由于我的电脑没有安装 IE10。忽略该警告，点击“继续”按钮。
+
+5) 接下来选择安装位置以及安装方式
+
+![img](./assets/15541515F-5.png)
+
+这里我将 VS2015 安装在 D:\Program Files\ 目录下，你也可以安装在别的目录。
+
+VS2015 除了支持 C/[C++](http://c.biancheng.net/cplus/) 开发，还支持 [C#](http://c.biancheng.net/csharp/)、F#、VB 等其他语言，我们没必要安装所有的组件，只需要安装与 C/C++ 相关的组件即可，所以这里选择“自定义”。
+
+6) 选择要安装的组件
+
+![img](./assets/1554151V3-6.png)
+
+我们不需要 VS2015 的全部组件，只需要与 C/C++ 相关的组件，所以这里只选择了“Visual C++”，将其它用不到的组件全部取消勾选了。
+
+点击“下一步”按钮，弹出如下的确认对话框：
+
+![img](./assets/1554153V0-7.png)
+
+点击“安装”按钮开始安装。
+
+7) 接下来进入漫长的等待过程，可能需要半个小时左右。
+
+![img](./assets/155415Hb-8.png)
+
+安装完成后，VS2015 会要求重启计算机。嗯，那就重启吧。
+
+8) 重启完成后，打开“开始菜单”，发现多了一个叫“Visual Studio 2015”的图标，就证明安装成功了。
+
+![img](./assets/15541553G-9.png)
+
+#### 设置 VS2015
+
+首次使用 VS2015 还需要简单的配置，主要包括开发环境和主题风格。
+
+启动 VS2015，会提示登录：
+
+![img](./assets/1554156291-10.png)
+
+如果你不希望登录，可以点击“以后再说”。
+
+接下来选择环境配置：
+
+![img](./assets/1554152014-11.png)
+
+我们将使用 VS2015 进行 C/C++ 程序开发，所以选择“Visual C++”这个选项。至于颜色主题，大家自己看着办。
+
+等待几分钟的准备过程，VS2015 就启动成功了。
+
+![img](./assets/1554152C4-12.png)
+
+### 二、VS2015使用教程
+
+前面我们给出了一段完整的C语言代码，就是在显示器上输出“C语言中文网”，如下所示：
+
+```c
+#include <stdio.h>
+int main()
+{
+    puts("C语言中文网");
+    return 0;
+}
+```
+
+本节我们就来看看如何通过 VS2015 来运行这段代码。
+
+#### 1) 创建项目（Project）
+
+在 VS2015 下开发程序首先要创建项目，不同类型的程序对应不同类型的项目，初学者应该从控制台程序学起。
+
+打开 VS2015，在上方菜单栏中选择“文件 --> 新建 --> 项目”：
+
+![img](./assets/155ZBE7-0.png)
+
+
+或者按下`Ctrl+Shift+N`组合键，都会弹出下面的对话框：
+
+![img](./assets/155ZBI2-1.png)
+
+选择“Win32控制台应用程序”，填写好项目名称，选择好存储路径，点击“确定”按钮即可。
+
+如果你安装的是英文版的 VS2015，那么对应的项目类型是“Win32 Console Application”。另外还要注意，项目名称和存储路径最好不要包含中文。
+
+点击“确定”按钮后会弹出向导对话框：
+
+![img](./assets/155ZB445-2.png)
+
+
+点击“下一步”按钮，弹出新的对话框：
+
+![img](./assets/155ZA129-3.png)
+
+
+先取消“预编译头”和“安全开发生命周期检查”这两个选项，再勾选“空项目”，然后点击“完成”按钮就创建了一个新的项目。
+
+感兴趣的读者可以打开 E 盘，会发现多了一个cDemo文件夹，这就是整个项目所在的文件夹。
+
+#### 2) 添加源文件
+
+在“源文件”处右击鼠标，在弹出菜单中选择“添加 -> 新建项”，如下图所示：
+
+![img](./assets/155ZB1E-4.png)
+
+
+或者按下`Ctrl+Shift+A`组合键，都会弹出添加源文件的对话框。如下图所示：
+
+![img](./assets/155ZB4C-5.png)
+
+
+在“代码”分类中选择[C++](http://c.biancheng.net/cplus/)文件(.cpp)，填写文件名，点击“添加”按钮就添加了一个新的源文件。
+
+![img](./assets/155Z63416-6.png)
+
+小小的提示：C++是在C语言的基础上进行的扩展，C++已经包含了C语言的所有内容，所以大部分的 IDE 只有创建C++文件的选项，没有创建C语言文件的选项。但是这并不影响使用，我们在填写源文件名称时把后缀改为`.c`即可，编译器会根据源文件的后缀来判断代码的种类。上图中，我们将源文件命名为`hello.c`。
+
+#### 3) 编写代码并生成程序
+
+打开 hello.c，将本节开头的代码输入到 hello.c 中，上图是输入完成以后的效果。
+
+> 注意：虽然可以将整段代码复制到编辑器，但是我还是强烈建议你手动输入，我敢保证你第一次输入代码会有各种各样的错误，只有把这些错误都纠正了，你才会进步。本教程后续章节还会给出很多示例代码，这些代码一定要手动输入，不要复制后运行成功了就万事大吉。
+
+#### 编译（Compile）
+
+在上方菜单栏中选择“生成 --> 编译”，就完成了 hello.c 源文件的编译工作。
+
+![img](./assets/155ZB2A-7.png)
+
+
+或者直接按下`Ctrl+F7`组合键，也能够完成编译工作，这样更加便捷。
+
+如果代码没有错误，会在下方的“输出窗口”中看到编译成功的提示：
+
+![img](./assets/155Z61D3-8.png)
+
+
+编译完成后，打开项目目录（本教程中是 E:\cDemo\）下的 Debug 文件夹，会看到一个名为`hello.obj`的文件，这就是经过编译产生的中间文件，这种中间文件的专业称呼是目标文件（Object File）。在 VS 和 VC 下，目标文件的后缀都是`.obj`。
+
+##### 链接（Link）
+
+在菜单栏中选择“项目 --> 仅用于项目 --> 仅链接 cDemo”，就完成了 hello.obj 的链接工作，如下图所示：
+
+![img](./assets/155Z63S0-9.png)
+
+
+如果代码没有错误，会在下方的“输出窗口”中看到链接成功的提示：
+
+![img](./assets/155Z642X-10.png)
+
+> 本项目中只有一个目标文件，链接的作用是将 hello.obj 和系统组件（专业讲是静态链接库）结合起来，形成可执行文件。如果有多个目标文件，这些目标文件之间还要相互结合。
+
+再次打开项目目录（本教程中是 E:\cDemo\）下的 Debug 文件夹，会看到一个名为`cDemo.exe`的文件，这就是最终生成的可执行文件，就是我们想要的结果。
+
+双击 cDemo.exe 运行，并没有输出“C语言中文网”几个字，而是会看到一个黑色窗口一闪而过。这是因为，程序输出“C语言中文网”后就运行结束了，窗口会自动关闭，时间非常短暂，所以看不到输出结果，只能看到一个“黑影”。
+
+对上面的代码稍作修改，让程序输出“C语言中文网”后暂停下来：
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+int main()
+{
+    puts("C语言中文网");
+    system("pause");
+    return 0;
+}
+```
+
+`system("pause");`语句的作用就是让程序暂停一下。注意代码开头部分还添加了`#include <stdlib.h>`语句，否则`system("pause");`无效。
+
+再次编译并链接，运行生成的 cDemo.exe，终于如愿以偿，看到输出结果了，如下图所示：
+
+![img](./assets/155ZA024-11.png)
+
+按下键盘上的任意一个键，程序就会关闭。
+
+##### 更加快捷的办法
+
+我们把上面的步骤总结一下，可以发现一个完整的编程过程是：
+
+- 编写源文件：这是编程的主要工作，我们要保证代码的语法100%正确，不能有任何差错；
+- 编译：将源文件转换为目标文件；
+- 链接：将目标文件和系统库组合在一起，转换为可执行文件；
+- 运行：可以检验代码的正确性。
+
+
+不过 VS 提供了一种更加快捷的方式，可以一键完成编译、链接、运行三个动作，点击菜单栏中的“运行”按钮，或者按下`F5`键就能做到这一点。
+
+![img](./assets/155Z64R5-12.png)
+
+##### 还有更实用的技巧
+
+如果我们的代码中没有添加`system("pause");`暂停语句，点击“运行”按钮，或者按下`F5`键后程序依然会一闪而过，只能看到一个“黑影”。
+
+如果想让程序自动暂停，可以按下`Ctrl+F5`组合键，这样程序就不会一闪而过了；换句话说，按下`Ctrl+F5`键，VS 会自动在程序的最后添加暂停语句。
+
+现在我们已经了解了从编写代码到生成程序的整个过程，在以后的学习中，可以直接使用`Ctrl+F5`组合键了，不用再分步骤完成了，这样会更加方便和实用。
+
+#### 4) 总结
+
+现在，你就可以将 cDemo.exe 分享给你的朋友了，告诉他们这是你编写的第一个C语言程序。虽然这个程序非常简单，但是你已经越过了第一道障碍，学会了如何编写代码，如何将代码生成可执行程序，这是一个完整的体验。
+
+在本教程的基础部分，教大家编写的程序都是这样的“黑窗口”，与我们平时使用的软件不同，它们没有漂亮的界面，没有复杂的功能，只能看到一些文字，这就是控制台程序（Console Application），它与DOS非常相似，早期的计算机程序都是这样的。
+
+控制台程序虽然看起来枯燥无趣，但是它非常简单，适合入门，能够让大家学会编程的基本知识；只有夯实基本功，才能开发出健壮的GUI（Graphical User Interface，图形用户界面）程序，也就是带界面的程序。
+
+### 三、VS常用快捷键
 
 | **快捷键**        | **含义**       |
 | ----------------- | -------------- |
@@ -871,9 +1190,9 @@ Microsoft Visual Studio（简称VS）是美国微软公司的开发工具包系�
 | F10               | next调试       |
 | F11               | step调试       |
 
-### 二、VS的C4996错误
+### 四、VS的C4996错误
 
-由于微软在VS2013中不建议再使用C的传统库函数scanf,strcpy,sprintf等，所以直接使用这些库函数会提示C4996错误
+由于微软在VS2013中不建议再使用C的传统库函数scanf,strcpy,sprintf等，所以直接使用这些库函数会提示C4996错误提示该函数可能不安全，并且建议替换为带有`_s`后缀的安全函数，如下图所示：
 
 <table style="border:none;text-align:center;width:auto;margin: 0 auto;">
 	<tbody>
@@ -883,6 +1202,63 @@ Microsoft Visual Studio（简称VS）是美国微软公司的开发工具包系�
     <tr><td><strong>VS2013的C4996错误</strong></td></tr>
 	</tbody>
 </table>
+#### 什么是安全函数（safe function）
+
+scanf()、gets()、fgets()、strcpy()、strcat() 等都是C语言自带的函数，它们都是标准函数，但是它们都有一个缺陷，就是不安全，可能会导致数组溢出或者缓冲区溢出，让黑客有可乘之机，从而发起“缓冲区溢出”攻击。
+
+scanf_s()、gets_s()、fgets_s()、strcpy_s()、strcat_s() 是微软自己发明的安全函数，它们仅适用于 VS，在其它编译器下无效。这些安全函数在读取或操作字符串时要求指明长度，这样一来，过多的字符就会被过滤掉，避免了数组或者缓冲区溢出。
+
+下面我们以 scanf_s() 为例来讲解。
+
+scanf() 在读取字符串时不会检查字符个数，它不知道数组或缓冲区到底能容纳多少个字符，例如：
+
+```c
+char buf[5]={0};
+scanf(“%s”, buf);
+```
+
+当用户输入`abcdeABCDE`这10个字符时，scanf() 会全部读取，并放入 buf 中，不过 buf 最多只能存储 5 个字符，不足以容纳用户输入的全部数据，所以多出来的 5 个字符就会使用 buf 后面的内存，而 buf 后面的内存可能没有使用权限，或者已经被别的数据占用，这就导致程序在运行时可能会出现不可预知的错误。
+
+最要命的是，这种错误只能等到程序运行时才能检测出来，在编译期间根本无法检测；一旦检测出来只有一种后果，就是程序被操作系统终止，也就是我们常说的“程序崩溃”。
+
+更改上面的代码，使用 scanf_s() 代替 scanf()：
+
+```c
+char buf[5] = {0};
+scanf_s(“%s”, buf, 5);
+```
+
+scanf_s() 最后一个参数用来指明数组或者缓冲区的大小，假设它的值为 n，那么最多只允许读取 n-1 个字符（因为最后要存储`'\0'`），多出来的字符就不再读取了，这样就可以避免读入过多的字符。与 scanf() 相比，scanf_s() 显然更加安全。
+
+但是，安全函数不利于大家学习，它们不但使用麻烦，而且也不被绝大多数教程采用。另外，安全函数是微软自己发明的，只适用于 VS 编译器，在其他编译器下无效。
+
+#### 如何取消安全函数的限制
+
+##### 方法一
+
+我们通过对 VS 做适当的设置，让它不再强制使用安全函数，从而可以使用 scanf()、gets()、fgets()、strcpy()、strcat() 等C语言的标准函数去编程。
+
+VS 之所以会提示使用安全函数，是因为它进行了SDL检查（安全性开发生命周期检查），只要将它取消就可以了。
+
+1) 菜单栏中选择 “项目 --> xxx属性”（xxx为创建的项目名称），或者直接按下组合键“Alt+F7”，如下图所示：
+
+![img](./assets/1H42635L-1.png)
+
+
+
+2) 此时会弹出如下图所示的一个对话框，选择“C/[C++](http://c.biancheng.net/cplus/) --> SDL检查”，将“是”改为“否”，如下图所示：
+
+![img](./assets/1H4264642-2.png)
+
+
+
+3) 最后点击“确定”按钮，重新运行程序，你会发现程序可以正常运行了。
+
+另外，VS2010、VS2015 等低版本的 VS 可以在创建项目之处就取消 SDL 检查（如下图所示），但是到了 VS2017 时就不行了，创建项目时没有这个选项了，只能在创建项目完成以后再按照以上步骤取消 SDL 检查。
+
+![img](./assets/1H4262a2-3.png)
+
+##### 方法二
 
 VS建议采用带`_s`的函数，如`scanf_s`、`strcpy_s`，但这些并不是标准C函数。要想继续使用此函数，需要在源文件中添加以下指令就可以避免这个错误提示：
 
@@ -891,7 +1267,7 @@ VS建议采用带`_s`的函数，如`scanf_s`、`strcpy_s`，但这些并不是�
 #pragma warning(disable:4996)		//或者使用这个
 ```
 
-### 三、解决提示窗一闪而过
+### 五、解决提示窗一闪而过
 
 - 方法一：通过`system()`函数解决
 
@@ -901,9 +1277,55 @@ VS建议采用带`_s`的函数，如`scanf_s`、`strcpy_s`，但这些并不是�
 
 在项目上 ---> 右键 ---> 属性 ---> 配置属性 ---> 连接器 ---> 系统 ---> 子系统 ---> 在下拉框中选择`控制台 (/SUBSYSTEM:CONSOLE)`选项
 
-### 四、快捷导入代码
+### 六、快捷导入代码
 
 Visual Studio  –>  工具  –>  代码片段管理器  –>  Visual C++
+
+### 七、VS“无法查找或打开PDB文件”是怎么回事？如何解决
+
+有时候，我们使用 VS（Visual Studio）编译程序时会出现“无法查找或打开PDB文件”的提示，并且此时程序会生成失败，无法运行，如下图所示：
+
+![img](./assets/1H531DV-0.png)
+
+
+大家不要惊慌，出现这种提示并不是代码写错了，而是编译器设置的问题，改一下设置就 OK 了。
+
+#### 先说一下PDB文件是什么
+
+当程序在 VS 上编译时，程序所依赖的所有动态链接库（dll 文件）也会被编译，编译过程中每个 dll 都会产生一个pdb文件，又称为“符号文件”，是一个存储数据的信息文件，其包含 dll 库在编译过程的某些调试信息，例如程序中所用到的全局变量、局部变量、函数名以及他们的入口地址等。
+
+pdb 文件主要用于调试程序，多用于当VS中有多个项目，且项目之间互有依赖关系时，使用pdb文件调试程序，往往会事半功倍，初学者一般不会用到。
+
+当使用VS 调试程序时，会默认加载你的程序以及程序依赖的dll库产生的所有pdb文件，但是结果往往是VS自己找不到依赖库的pdb文件，于是就提示给你“无法查找或打开pdb文件”。
+
+#### 如何修复这个错误
+
+我们可以通过对 VS 做适当的设置，使之能够查找到相应的 PDB 文件，具体步骤如下（这里我们以 VS2017 为例进行说明，其它版本的 VS 操作步骤也一样）。
+
+1) 选择菜单栏中的“调试 --> 选项”，如下图所示：
+
+![img](./assets/1H531B44-1.png)
+
+
+
+2) 弹出“选项”对话框后，选择“调试 --> 常规”，在右侧选项栏中勾选“启用源服务器支持”（包含的 3 个子选项不用勾选），此时会弹出一个安全警报框，选择“是”即可，如下图所示：
+
+![img](./assets/1H531DK-2.png)
+
+
+
+3) 还是在“选项”对话框中，选择“调试 --> 符号”，在右侧选项栏中勾选“Microsoft符号服务器”，此时会弹出一个提示对话框，点击“确定”即可。同时，对于缓存符号的目录，选择图示中的目录即可：
+
+![img](./assets/1H531Bb-3.png)
+
+
+
+4) 确定之后，重新运行你的程序，首次运行时，由于编译器会加载所有动态链接库的pdb文件，可能会等到几秒钟。程序运行后，之前输出窗口中的“无法查找或打开pdb文件”的提示不见了，如下图所示：
+
+![img](./assets/1H531H02-4.png)
+
+
+如上图所示，由于pdb文件，又名“符号文件”，所以“已加载符号”，也就是成功加载了动态链接库对应的pdb文件。
 
 ## 第四节、查找程序所依赖的动态库
 
