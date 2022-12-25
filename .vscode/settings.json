@@ -22,6 +22,8 @@
         "--compile-commands-dir=${workspaceFolder}/build",
         "--header-insertion=never"
     ],
+    "clang-format.assumeFilename": "${workspaceFolder}/.clang-format",
+    "clang-format.executable": "/usr/bin/clang-format",
     "explorer.confirmDelete": false,
     //
 }
