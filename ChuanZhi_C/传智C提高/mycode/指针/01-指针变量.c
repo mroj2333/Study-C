@@ -24,14 +24,14 @@ void test01(void) {
   printf("test01:\n");
   printf("p1 size = %zd\n", sizeof(p1));
   printf("p2 size = %zd\n", sizeof(p2));
-  printf("a size = %zd\n", sizeof(a));
+  printf("a  size = %zd\n", sizeof(a));
 }
 void test02(void) {
   int a = 10;
   int *p = &a;
 
   printf("test02:\n");
-  printf("对指针变量p取地址，值为：%p\n", &p);
+  printf("对指针变量p取地址，值为：      %p\n", &p);
   printf("直接输出指针变量p的地址，值为：%p\n", p);
-  printf("对变量a取地址，值为：%p\n", &a);
+  printf("对变量a取地址，值为：          %p\n", &a);
 }
