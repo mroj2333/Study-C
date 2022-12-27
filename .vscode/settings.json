@@ -25,5 +25,9 @@
     "clang-format.assumeFilename": "${workspaceFolder}/.clang-format",
     "clang-format.executable": "/usr/bin/clang-format",
     "explorer.confirmDelete": false,
-    //
+    //VS Code Git配置
+    "http.proxyStrictSSL": false,
+    "git.enableSmartCommit": true,
+    "git.confirmSync": false,
+    "git.autofetch": true,
 }
