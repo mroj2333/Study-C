@@ -1,5 +1,6 @@
 {
-    // "clangd.path": "/usr/local/Cellar/llvm/15.0.6/bin/clangd",   Mac下使用brew安装llvm时启用
+    // "clangd.path": "/usr/local/Cellar/llvm/15.0.6/bin/clangd", //Mac下使用brew安装llvm时启用
+    "clangd.path": "/opt/homebrew/Cellar/llvm/15.0.6/bin/clangd", // M1 Mac下使用brew安装llvm时启用
     "files.autoSave": "afterDelay",
     "files.autoGuessEncoding": true,
     "workbench.list.smoothScrolling": true,
